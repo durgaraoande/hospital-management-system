@@ -1,0 +1,152 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styles */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main Content Styles */
+  .main-content {
+    margin-top: 20px;
+  }
+  
+  .main-content a {
+    display: block;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .main-content a:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Form Styles */
+  .form-container {
+    display: none;
+    margin-top: 10px;
+  }
+  
+  .form-container form {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-container input[type="text"],
+  .form-container button[type="submit"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-container button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  /* Button-like Anchor Tags */
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Primary color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Ensures a border even when not hovered */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+a.button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  border-color: #0056b3; /* Match hover background color */
+  color: white; /* Match hover background color */
+}
+
+/* Form Styles */
+.form-container {
+  display: none;
+  margin-top: 10px;
+}
+
+.form-container form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-container input[type="text"],
+.form-container button[type="submit"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-container button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+  
+  /* Media Queries */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      padding: 10px 5px;
+    }
+  
+    .navbar a {
+      margin-right: 10px;
+    }
+  
+    .main-content a {
+      padding: 8px;
+    }
+  }
+  

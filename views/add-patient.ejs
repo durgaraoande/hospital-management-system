@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <link rel="stylesheet" type="text/css" href="/css/add-patient.css">
+    </div>
+    <form action="/api/patients" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <label for="doctor">Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="Dr. Smith">Dr. Smith</option>
+            <option value="Dr. Johnson">Dr. Johnson</option>
+            <option value="Dr. Brown">Dr. Brown</option>
+            <option value="Other">Other</option>
+        </select>
+        
+        <input type="hidden" name="viscount" id="viscount" value="1" readonly>
+        
+        <input type="hidden" name="amount" id="amount" value="600">
+        <br>
+        <label for="contact">Contact:</label>
+        <input type="number" id="contact" name="contact" required>
+    
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="<%= new Date().toISOString().split('T')[0] %>" required>
+        <br>
+        <button type="submit">Add Patient</button>
+    </form>
+    <script>
+        document.getElementById('doctor').addEventListener('change', function() {
+            var amountField = document.getElementById('amount');
+            switch (this.value) {
+                case 'Dr. Smith':
+                    amountField.value = 600;
+                    break;
+                case 'Dr. Johnson':
+                    amountField.value = 700;
+                    break;
+                case 'Dr. Brown':
+                    amountField.value = 800;
+                    break;
+                default:
+                    amountField.value = 500;
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="button">Home</a>
+    </div>
+    <br>
+    <div >
+        <a href="/api/patients" class="button">View Patients</a>
+        <a href="add-patient" class="button">Add Patient</a>
+        
+        <a href="#" onclick="showSearchForm()" class="button">Search Patient</a>
+        <% if (typeof error !== 'undefined') { %>
+            <p><%= error %></p>
+        <% } %>
+       
+        <div class="form-container" id="searchForm" style="display: none;">
+            <form action="/api/patients" method="GET">
+              <input type="text" name="name" placeholder="Enter patient name">
+            <br/>
+              <button type="submit" class="button">Search</button>
+            </form>
+          </div>
+        <% if (typeof message !== 'undefined') { %>
+            <p><%= message %></p>
+        <% } %>
+    </div>
+ 
+    <script>
+    function showSearchForm() {
+        var form = document.getElementById('searchForm');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+    </script>
+    
+</body>
+</html>

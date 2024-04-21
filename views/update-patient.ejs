@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/update-patient.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+    </div>
+    <form id="updateForm">
+        <!-- Your form fields here -->
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="<%= patient.name %>"><br>
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age" value="<%= patient.age %>"><br>
+        <label for="gender">Gender:</label><br>
+        <input type="text" id="gender" name="gender" value="<%= patient.gender %>"><br>
+        <label for="doctor">Doctor:</label>
+        <select id="doctor" name="doctor">
+            <option value="Dr. Smith" <%= patient.doctor === 'Dr. Smith' ? 'selected' : '' %>>Dr. Smith</option>
+            <option value="Dr. Johnson" <%= patient.doctor === 'Dr. Johnson' ? 'selected' : '' %>>Dr. Johnson</option>
+            <option value="Dr. Brown" <%= patient.doctor === 'Dr. Brown' ? 'selected' : '' %>>Dr. Brown</option>
+            <option value="Other" <%= patient.doctor === 'Other' ? 'selected' : '' %>>Other</option>
+        </select>
+        <br>
+        <label for="viscount">Viscount:</label><br>
+        <input type="text" id="viscount" name="viscount" value="<%= patient.viscount %>" readonly ><br>
+        <label for="amount">Amount:</label><br>
+        <input type="text" id="amount" name="amount" value="<%= patient.amount %>" readonly><br>
+        <label for="contact">Contact:</label><br>
+        <input type="text" id="contact" name="contact" value="<%= patient.contact %>"><br>
+       
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date" value="<%= formattedDate %>"><br>
+        <label for="active">Active:</label><br>
+        <input type="text" id="active" name="active" value="<%= patient.active %>" readonly><br>
+        <input type="submit" value="Update">
+    </form>
+    
+    <script>
+    document.getElementById('updateForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var viscount = parseInt(document.getElementById('viscount').value, 10) || 0;
+        viscount = viscount >= 5 ? 1 : viscount + 1;
+    
+        var formamount=parseInt(document.getElementById('amount').value, 10) || 0;
+        var currentHour = new Date().getHours();
+        var amount = viscount === 1 ? (currentHour < 8 ? (formamount-100) : formamount) : 100;
+        
+        var dateField = document.getElementById('date');
+        if (viscount === 1) {
+            dateField.value = new Date().toISOString().split('T')[0];
+        }
+        var dateValue = dateField.value;
+        var dateDifference = Math.floor((new Date() - new Date(dateValue)) / (1000 * 60 * 60 * 24));
+        var active = dateDifference <= 10;
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open('PATCH', '/api/patients/' + document.getElementById('name').value, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+    
+        xhr.onload = function() {
+            console.log('Status:', xhr.status);
+            console.log('Response:', xhr.responseText);
+            if (xhr.status === 200) {
+                var updatedPatient = JSON.parse(xhr.responseText);
+                window.location = '/api/patients';
+            } else {
+                alert('Error: ' + xhr.status);
+            }
+        };
+    
+        
+        var data = {
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            gender: document.getElementById('gender').value,
+            contact: document.getElementById('contact').value,
+            doctor: document.getElementById('doctor').value,
+            viscount: viscount,
+            amount: amount,
+            date: dateValue,
+            active:active
+        };
+    
+        xhr.send(JSON.stringify(data));
+    });
+    </script>
+    <script>
+        document.getElementById('doctor').addEventListener('change', function() {
+            var amountField = document.getElementById('amount');
+            switch (this.value) {
+                case 'Dr. Smith':
+                    amountField.value = 600;
+                    break;
+                case 'Dr. Johnson':
+                    amountField.value = 700;
+                    break;
+                case 'Dr. Brown':
+                    amountField.value = 800;
+                    break;
+                default:
+                    amountField.value = 500;
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
