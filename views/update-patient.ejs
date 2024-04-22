@@ -46,16 +46,25 @@
         viscount = viscount >= 5 ? 1 : viscount + 1;
     
         var formamount=parseInt(document.getElementById('amount').value, 10) || 0;
+        formamount=viscount===1 ? 600:formamount;
         var currentHour = new Date().getHours();
         var amount = viscount === 1 ? (currentHour < 8 ? (formamount-100) : formamount) : 100;
         
         var dateField = document.getElementById('date');
+        var formDate=dateField.value;
         if (viscount === 1) {
             dateField.value = new Date().toISOString().split('T')[0];
         }
         var dateValue = dateField.value;
         var dateDifference = Math.floor((new Date() - new Date(dateValue)) / (1000 * 60 * 60 * 24));
-        var active = dateDifference <= 10;
+        var active = true
+        if (dateDifference > 10){
+             active=false;
+             viscount=0;
+        }
+        if(active===false && (new Date().toISOString().split('T')[0])===formDate){
+            viscount=1;
+        }
     
         var xhr = new XMLHttpRequest();
         xhr.open('PATCH', '/api/patients/' + document.getElementById('name').value, true);

@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
-const appointmentRoutes = require('./routes/appointmentRoutes');
+// const appointmentRoutes = require('./routes/appointmentRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,7 +26,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use('/api', patientRoutes);
 app.use('/api', doctorRoutes);
-app.use('/api', appointmentRoutes);
+//app.use('/api', appointmentRoutes);
 app.use('/', require('./routes/basicroutes'));
 
 app.listen(PORT, () => {
