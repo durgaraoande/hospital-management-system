@@ -8,7 +8,7 @@
         <a href="/">Home</a>
         <link rel="stylesheet" type="text/css" href="/css/add-patient.css">
     </div>
-    <form action="/api/patients" method="post">
+    <form action="/api/patients" method="post" id="add-patient-form">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
         <br>
@@ -59,6 +59,12 @@
                     amountField.value = 500;
                     break;
             }
+        });
+    </script>
+    <script>
+        document.getElementById('add-patient-form').addEventListener('submit', function(event) {
+            var nameField = document.getElementById('name');
+            nameField.value = nameField.value.toLowerCase();
         });
     </script>
 </body>

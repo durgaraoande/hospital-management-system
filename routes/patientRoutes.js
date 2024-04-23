@@ -6,7 +6,7 @@ const Patient = require('../models/patient');
 router.post('/patients', async (req, res) => {
   try {
     // Check if a patient with the provided name already exists
-    const existingPatient = await Patient.findOne({ name: req.body.name });
+    const existingPatient = await Patient.findOne({ name: req.body.name.toLowerCase() });
     if (existingPatient) {
       res.render('home', { message: 'A patient with this name already exists' });
     } else {
@@ -23,7 +23,7 @@ router.get('/patients', async (req, res) => {
   try {
     if (req.query.name) {
       // A name is provided in the query string, find a patient by name
-      const patient = await Patient.findOne({ name: req.query.name });
+      const patient = await Patient.findOne({ name: req.query.name.toLowerCase() });
       if (patient) {
         res.render('patients', { patients: [patient] }); // Render patients.ejs with the patient's data
       } else {
