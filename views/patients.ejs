@@ -24,7 +24,7 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style=" background-color:#f0f0f0;">
       <% patients.forEach(patient => { %>
         <tr>
           <td><%= patient.name %></td>
@@ -36,9 +36,9 @@
           <td><%= patient.date %></td>
           <td><%= patient.active %></td>
           <td><%= patient.contact %></td>
-          <td><a href="/api/update-patient/<%= patient.name %>">Update</a></td>
+          <td><a href="/api/update-patient/<%= patient.name %>"><button>Update</button></a></td>
           <td>
-            <a href="#" onclick="deletePatient('<%= patient.name %>')">Delete</a>
+            <a href="#" onclick="deletePatient('<%= patient.name %>')"><button>Delete</button></a>
           </td>
         </tr>
       <% }); %>

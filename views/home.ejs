@@ -5,26 +5,38 @@
     <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
-    <div class="navbar">
-        <a href="/" class="button">Home</a>
-    </div>
-    <br>
-    <div >
-        <a href="/api/patients" class="button">View Patients</a>
-        <a href="/add-patient" class="button">Add Patient</a>
-        
-        <a href="#" onclick="showSearchForm()" class="button">Search Patient</a>
-        <% if (typeof error !== 'undefined') { %>
-            <p><%= error %></p>
-        <% } %>
-       
-        <div class="form-container" id="searchForm" style="display: none;">
-            <form action="/api/patients" method="GET">
-              <input type="text" name="name" placeholder="Enter patient name">
-            <br/>
-              <button type="submit" class="button">Search</button>
-            </form>
-          </div>
+    <div class="container">
+        <div class="navbar">
+            <a href="/" class="button">Home</a>
+            <div class="welcome">
+                <h2>Welcome to the Hospital Management System</h2>
+                
+            </div>
+        </div>
+        <br>
+        <div class="content">
+            <div class="button-container">
+                <a href="/api/patients" class="button">View Patients</a>
+                <a href="add-patient" class="button">Add Patient</a>
+                <a href="#" onclick="showSearchForm()" class="button">Search Patient</a>
+                <% if (typeof error !== 'undefined') { %>
+                    <p><%= error %></p>
+                <% } %>
+            </div>
+            <div class="form-container" id="searchForm" style="display: none;">
+                <form action="/api/patients" method="GET">
+                    <input type="text" name="name" placeholder="Enter patient name">
+                    <br/>
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+            <div class="welcome">
+                
+                <h3>Use the buttons above to view and manage patient records.</h3>
+            </div>
+        </div>
+    
+ 
         <% if (typeof message !== 'undefined') { %>
             <p><%= message %></p>
         <% } %>

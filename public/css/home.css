@@ -1,152 +1,136 @@
-/* Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body Styles */
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    background-color: #f7f7f7;
-    color: #333;
+body {
+    background-image: url('images/image-3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .container {
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Navbar Styles */
+  .content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
   .navbar {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
+    background-color: #ace5f7;
+    overflow: hidden;
+    padding: 10px 10px;
+  }
+  
+  .navbar .welcome{
+    text-align: center;
   }
   
   .navbar a {
-    color: white;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 16px;
     text-decoration: none;
-    margin-right: 20px;
+    font-size: 17px;
+    margin-right: 10px;
   }
   
   .navbar a:hover {
-    text-decoration: underline;
+    background-color: #ddd;
+    color: black;
   }
   
-  /* Main Content Styles */
-  .main-content {
-    margin-top: 20px;
-  }
-  
-  .main-content a {
-    display: block;
-    padding: 10px;
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    color: #333;
+  .button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
   }
   
-  .main-content a:hover {
-    background-color: #e0e0e0;
+  .button:hover {
+    background-color: #007bff;
   }
   
-  /* Form Styles */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
   .form-container {
-    display: none;
-    margin-top: 10px;
+    margin: 20px 0;
   }
   
   .form-container form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
   }
   
-  .form-container input[type="text"],
-  .form-container button[type="submit"] {
-    padding: 8px;
-    border-radius: 5px;
+  .form-container input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
-  .form-container button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+  .form-container button {
+    margin-top: 10px;
   }
   
-  .form-container button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-
-  /* Button-like Anchor Tags */
-a.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff; /* Primary color */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  border: 1px solid transparent; /* Ensures a border even when not hovered */
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-a.button:hover {
-  background-color: #0056b3; /* Darker shade for hover effect */
-  border-color: #0056b3; /* Match hover background color */
-  color: white; /* Match hover background color */
-}
-
-/* Form Styles */
-.form-container {
-  display: none;
-  margin-top: 10px;
-}
-
-.form-container form {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-container input[type="text"],
-.form-container button[type="submit"] {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.form-container button[type="submit"] {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.form-container button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-
-  
-  /* Media Queries */
-  @media screen and (max-width: 768px) {
-    .navbar {
-      padding: 10px 5px;
-    }
-  
-    .navbar a {
-      margin-right: 10px;
-    }
-  
-    .main-content a {
-      padding: 8px;
-    }
+  .sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
   }
   
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+  }
+  
+  .sidebar a:hover {
+    background-color: #444;
+  }
+  
+  .welcome {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .welcome h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .welcome p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
