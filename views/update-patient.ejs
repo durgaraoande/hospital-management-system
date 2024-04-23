@@ -46,7 +46,7 @@
         viscount = viscount >= 5 ? 1 : viscount + 1;
     
         var formamount=parseInt(document.getElementById('amount').value, 10) || 0;
-        formamount=viscount===1 ? 600:formamount;
+        
         var currentHour = new Date().getHours();
         var amount = viscount === 1 ? (currentHour < 8 ? (formamount-100) : formamount) : 100;
         
@@ -98,23 +98,35 @@
     });
     </script>
     <script>
-        document.getElementById('doctor').addEventListener('change', function() {
-            var amountField = document.getElementById('amount');
-            switch (this.value) {
-                case 'Dr. Smith':
-                    amountField.value = 600;
-                    break;
-                case 'Dr. Johnson':
-                    amountField.value = 700;
-                    break;
-                case 'Dr. Brown':
-                    amountField.value = 800;
-                    break;
-                default:
-                    amountField.value = 500;
-                    break;
+        window.onload = function() {
+            // Function to set the initial value when the page loads
+            function setAmountByDoctor(doctorValue) {
+                var amountField = document.getElementById('amount');
+                switch (doctorValue) {
+                    case 'Dr. Smith':
+                        amountField.value = 600;
+                        break;
+                    case 'Dr. Johnson':
+                        amountField.value = 700;
+                        break;
+                    case 'Dr. Brown':
+                        amountField.value = 800;
+                        break;
+                    default:
+                        amountField.value = 500;
+                        break;
+                }
             }
-        });
+    
+            // Set the initial value when the page loads
+            setAmountByDoctor(document.getElementById('doctor').value);
+    
+            // Update the amount when the select element changes
+            document.getElementById('doctor').addEventListener('change', function() {
+                setAmountByDoctor(this.value);
+            });
+        };
     </script>
+    
 </body>
 </html>
