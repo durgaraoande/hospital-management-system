@@ -28,6 +28,10 @@ const patientSchema = new Schema({
   viscount:{
     type:Number
   },
+  opcount:{
+    type: Number,
+    required:true
+  },
   amount:{
     type:Number
   },

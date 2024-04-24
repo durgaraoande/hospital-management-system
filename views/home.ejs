@@ -30,6 +30,16 @@
                     <button type="submit" class="button">Search</button>
                 </form>
             </div>
+
+            <a href="#" onclick="showSearchForm1()" class="button">Search Patient by Date</a>
+            <div class="form-container" id="searchForm1" style="display: none;">
+                <form action="/api/patients" method="GET">
+                    <input type="date" name="date" placeholder="Enter Date">
+                    <br/>
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+
             <div class="welcome">
                 
                 <h3>Use the buttons above to view and manage patient records.</h3>
@@ -52,6 +62,16 @@
         }
     }
     </script>
+    <script>
+        function showSearchForm1() {
+            var form = document.getElementById('searchForm1');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+        </script>
     
 </body>
 </html>

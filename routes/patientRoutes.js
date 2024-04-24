@@ -29,7 +29,17 @@ router.get('/patients', async (req, res) => {
       } else {
         res.render('home', { error: 'No patient exists' });
       }
-    } else {
+    }
+      else if(req.query.date){
+        const date = new Date(req.query.date);
+        const patients = await Patient.find({ date: date });
+        if (patients.length > 0) {
+          res.render('patients', { patients: patients }); // Render patients.ejs with the patients' data
+        } else {
+          res.render('home', { error: 'No patient exists' });
+        }
+    }
+    else {
       // No name is provided in the query string, return all patients
       const patients = await Patient.find();
       res.render('patients', { patients: patients }); // Render patients.ejs with all patients' data

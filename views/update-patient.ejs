@@ -26,6 +26,9 @@
         <br>
         <label for="viscount">Viscount:</label><br>
         <input type="text" id="viscount" name="viscount" value="<%= patient.viscount %>" readonly ><br>
+        <label for="opcount">opcount:</label><br>
+        <input type="hidden" id="opcount" name="opcount" value="<%= patient.opcount %>" readonly ><br>
+
         <label for="amount">Amount:</label><br>
         <input type="text" id="amount" name="amount" value="<%= patient.amount %>" readonly><br>
         <label for="contact">Contact:</label><br>
@@ -41,6 +44,9 @@
     <script>
     document.getElementById('updateForm').addEventListener('submit', function(event) {
         event.preventDefault();
+
+        var opcount = parseInt(document.getElementById('opcount').value, 10) || 0;
+        opcount=opcount+1;
         
         var viscount = parseInt(document.getElementById('viscount').value, 10) || 0;
         viscount = viscount >= 5 ? 1 : viscount + 1;
@@ -58,7 +64,7 @@
         var dateValue = dateField.value;
         var dateDifference = Math.floor((new Date() - new Date(dateValue)) / (1000 * 60 * 60 * 24));
         var active = true
-        if (dateDifference > 10){
+        if (dateDifference > 30){
              active=false;
              viscount=0;
         }
@@ -91,7 +97,8 @@
             viscount: viscount,
             amount: amount,
             date: dateValue,
-            active:active
+            active:active,
+            opcount:opcount
         };
     
         xhr.send(JSON.stringify(data));
