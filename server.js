@@ -12,10 +12,11 @@ app.set('view engine', 'ejs');
 
 // MongoDB connection
 // mongoose.connect('mongodb://localhost:27017/hospitalDB', {
-mongoose.connect(MONGOD_CONNECT_URI, {
+mongoose.connect(process.env.MONGOD_CONNECT_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
